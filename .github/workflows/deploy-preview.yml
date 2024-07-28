@@ -26,7 +26,7 @@ jobs:
       - id: create-branch
         uses: neondatabase/create-branch-action@v5
         with:
-          project_id: delicate-smoke-42060837
+          project_id: ${{ vars.NEON_PROJECT_ID }}
           username: "neondb_owner" # Change this to the role you use to connect to your database
           branch_name: preview/${{ steps.branch-name.outputs.current_branch }}
           api_key: ${{ secrets.NEON_API_KEY }} # Generate an API key in your Neon account settings
