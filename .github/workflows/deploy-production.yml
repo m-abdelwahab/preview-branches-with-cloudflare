@@ -20,6 +20,10 @@ jobs:
         env: 
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
+      - run: bun run build
+        env:
+          DATABASE_URL: ${{ steps.create-branch.outputs.db_url_with_pooler }}
+          
       - name: Deploy API
         uses: AdrianGonz97/refined-cf-pages-action@v1
         id: deploy-api
@@ -28,5 +32,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: preview-branches-with-cloudflare
-          directory: dist
+          directory: ./dist
           deploymentName: production
