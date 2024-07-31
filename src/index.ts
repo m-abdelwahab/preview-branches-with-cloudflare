@@ -1,5 +1,4 @@
 import { Hono } from "hono";
-import { renderer } from "./renderer";
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 import * as schema from "./lib/db/schema";
@@ -9,8 +8,6 @@ type Bindings = {
 };
 
 const app = new Hono<{ Bindings: Bindings }>();
-
-app.use(renderer);
 
 app.get("/", async (c) => {
 	const sql = neon(c.env.DATABASE_URL);
