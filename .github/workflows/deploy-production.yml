@@ -25,12 +25,15 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           
       - name: Deploy API
-        uses: cloudflare/pages-action@v1
+        uses: AdrianGonz97/refined-cf-pages-action@v1
         id: deploy-api
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         with:
-          # gitHubToken: ${{ secrets.GH_TOKEN }}
+          githubToken: ${{ secrets.GH_TOKEN }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: preview-branches-with-cloudflare
           directory: ./dist
-          branch: main    
+          deploymentName: production
+          branch:     
