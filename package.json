@@ -7,7 +7,7 @@
 		"dev:esbuild": "esbuild --bundle src/index.ts --format=esm --watch --outfile=dist/_worker.js",
 		"build": "esbuild --bundle src/index.ts --format=esm --outfile=dist/_worker.js",
 		"preview": "wrangler pages dev",
-		"deploy": "$npm_execpath run build && wrangler pages deploy",
+		"deploy": "$npm_execpath run build && wrangler pages deploy ./dist",
 		"db:seed": "bun run ./src/lib/db/seed.ts",
 		"db:generate": "drizzle-kit generate --config=./src/lib/db/config.ts",
 		"db:migrate": "drizzle-kit migrate --config=./src/lib/db/config.ts",
