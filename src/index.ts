@@ -10,6 +10,7 @@ type Bindings = {
 const app = new Hono<{ Bindings: Bindings }>();
 
 app.get("/", async (c) => {
+	console.log(c.env);
 	const sql = neon(c.env.DATABASE_URL);
 
 	const db = drizzle(sql, {
