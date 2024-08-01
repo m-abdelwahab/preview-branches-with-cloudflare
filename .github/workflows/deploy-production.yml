@@ -34,4 +34,4 @@ jobs:
           projectName: preview-branches-with-cloudflare
           directory: ./dist
           deploymentName: production
-          branch:     
+          branch: main     
