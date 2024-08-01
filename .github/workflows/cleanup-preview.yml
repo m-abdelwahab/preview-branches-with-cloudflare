@@ -16,7 +16,7 @@ jobs:
 
     - name: Delete Cloudflare Pages preview deployments
       run: |
-        DEPLOY_BRANCH="preview/${{ github.event.pull_request.head.ref }}"
+        DEPLOY_BRANCH="${{ github.event.pull_request.head.ref }}"
         deployment_ids=$(curl -s -X GET "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/${{ github.event.repository.name }}/deployments" \
           -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
           -H "Content-Type: application/json" \
