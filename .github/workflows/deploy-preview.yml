@@ -35,6 +35,12 @@ jobs:
         env:
           DATABASE_URL: ${{ steps.create-branch.outputs.db_url_with_pooler }}
 
+      - name: Add the connection string to wrangler
+        id: add-neon-env-wrangler
+        run: |
+          echo "[vars]" >> wrangler.toml
+          echo "DATABASE_URL = \"${{ steps.create-branch.outputs.db_url_with_pooler }}\"" >> wrangler.toml
+
       - run: bun run build
         env:
           DATABASE_URL: ${{ steps.create-branch.outputs.db_url_with_pooler }}
