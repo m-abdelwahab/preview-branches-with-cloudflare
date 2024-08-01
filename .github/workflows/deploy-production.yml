@@ -27,8 +27,6 @@ jobs:
       - name: Deploy API
         uses: AdrianGonz97/refined-cf-pages-action@v1
         id: deploy-api
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         with:
           githubToken: ${{ secrets.GH_TOKEN }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
